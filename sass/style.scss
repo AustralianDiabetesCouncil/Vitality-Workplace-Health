@@ -1,0 +1,704 @@
+/*! Design and Code by: Scott Lyttle - http://lyttle.co */
+
+@import "compass/css3";
+
+// Variables and Extends
+	$bodybg: #f5f5f5;
+
+	$darkbg: #2c87af;
+	$lightbg: #f7f7f7;
+
+	$darktext: #666666;
+	$lighttext: #bdbdbd;
+	$headingcolor: #2c87af;
+
+	$buttonsurvey: #ff6000;
+	$bordercolor: #cecece;
+	$buttonsubscribe: #86cca4;
+
+	$navheight: 80px;
+
+	$inactivebutton: #666666;
+	$facebook: #3b5998;
+	$twitter: #009fcf;
+	$linkedin: #4875b4;
+
+	$fontstack: 'Open Sans', 'Helvetica Neue', Helvetica, arial, sans-serif;
+
+	// CSS3 for IE
+	%css3 {
+		behavior: url(../PIE.htc);
+	}
+
+	// Button
+	%button {
+	    display: inline-block;
+	    padding: 15px 60px;
+	    text-align: center;
+	    text-transform: uppercase;
+	    letter-spacing: 1px;
+	    position: relative;
+	    @include text-shadow(0px 1px 0px rgba(0,0,0,0.3));
+	    text-decoration: none;
+	    color: white;
+	    margin: 20px auto;
+	    @include box-shadow(inset 0 25px 0 rgba(255,255,255,0.15));
+	    behavior: url(../PIE.htc);
+	}
+
+	// Font Size
+	@mixin font-size($size) {
+	    font-size: $size + px;
+	    font-size: ($size / 10) + rem;
+	}
+
+// Reset
+@import "reset";
+//Fancybox
+@import "fancybox";
+// Icons
+@import "icons";
+
+// Globals
+*, *:before, *:after {
+	@include box-sizing(border-box);
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, arial, sans-serif;
+	color: $darktext;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	font-size: 10px;
+}
+
+body {
+	background: $bodybg;
+}
+
+blockquote {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+.page-wrap {
+	position: relative;
+	@include font-size(16);
+}
+
+.inner {
+	position: relative;
+	width: 90%;
+	max-width: 1100px;
+	margin: 0 auto;
+	overflow: hidden;
+	text-align: center;
+}
+
+.button {
+	@extend %button;
+
+	&.survey {
+		background: $buttonsurvey;
+	}
+}
+
+.section-title {
+	text-align: center;
+	color: $darktext;
+	@include font-size(30);
+	font-weight: 300;
+	padding: 100px 0 0;
+	margin: 0 auto 60px;
+	position: relative;
+
+	&:after {
+		content: '';
+		width: 200px;
+		height: 2px;
+		display: block;
+		background-color: $darktext;
+		position: absolute;
+		bottom: -15px;
+		left: 50%;
+		margin-left: -100px;
+	}
+
+	@media all and (max-width: 650px) {
+		padding-top: 40px;
+	}
+}
+
+
+/* ======================================================
+	HEADER
+====================================================== */
+
+.header-wrap {
+	background: $darkbg;
+	min-height: 420px;
+	max-height: 690px;
+
+	@media all and (min-width: 600px) {
+		background: $darkbg url(../img/banner.jpg) no-repeat 50% 100%;
+		background-size: cover;
+	}
+
+	@media all and (max-width: 655px) {
+		height: 440px!important;
+	}
+}
+
+header {
+	text-align: center;
+	padding: 0 0 60px;
+}
+
+.tagline {
+	font-weight: 700;
+	letter-spacing: -1px;
+	color: white;
+	margin: 0 auto 10px;
+	width: 100%;
+	display: block;
+	padding-top: 5.5%;
+	@include text-shadow(1px 1px 0px #015472);
+}
+
+.intro {
+	display: block;
+	color: white;
+	font-weight: 300;
+	font-style: italic;
+	@include font-size(16);
+	margin-bottom: 10px;
+
+	@media all and (max-width: 800px) {
+		@include font-size(13);
+	} 
+}
+
+.video {
+	position: relative;
+	top: 20px;
+}
+
+.fancybox {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	background: rgba(0,0,0,0.3);
+	border-radius: 50px;
+	behavior: url(../PIE.htc);
+
+	&:hover {
+		background: rgba(0,0,0,0.6);
+	}
+}
+
+.video-link {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	background: rgba(0, 0, 0, 0.3);
+	border-radius: 50px;
+	behavior: url(../PIE.htc);
+
+	&:hover {
+		background: rgba(0, 0, 0, 0.6);
+	}
+}
+
+
+/* ======================================================
+	NAVIGATION
+====================================================== */
+
+nav {
+	height: 80px;
+}
+
+.nav-wrap {
+	height: $navheight;
+	width: 100%;
+	border-bottom: 1px solid $bordercolor;
+	overflow: hidden;
+	z-index: 100;
+	background-color: white;
+
+	&.stuck {
+		position: fixed;
+		top: 0;
+
+		@media all and (max-width: 650px) {
+			position: relative;
+		}
+	}
+}
+
+.logo {
+	position: relative;
+	text-indent: -9999px;
+	height: 50px;
+	width: 266px;
+	top: 15px;
+	float: left;
+	display: inline-block;
+	background: url(../img/logo.jpg) no-repeat 0 0;
+	background-size: contain;
+
+	a {
+		display: block;
+		height: 50px;
+	}
+
+	@media all and (max-width: 530px) {
+		background: url(../img/logo-mini.jpg) no-repeat 0 0;
+		background-size: contain;
+		width: 114px;
+	}
+}
+
+nav ul {
+	position: relative;
+	float: right;
+	overflow: hidden;
+	margin: 0;
+	padding-left: 0;
+
+	li {
+		float: left;
+		position: relative;
+		padding: 0;
+
+		a {
+			@include font-size(13);
+			color: $darktext;
+			display: inline-block;
+			position: relative;
+			margin: 0 30px;
+			text-decoration: none;
+			line-height: $navheight;
+		}
+	}
+}
+
+nav ul li a.button.subscribe {
+	margin-top: 25px;
+}
+
+nav ul li a:not(.subscribe) {
+	@media all and (max-width: 1080px) {
+		display: none;
+	}
+}
+
+
+a[href="#frequent"] {
+	margin: 0 40px 0 30px;
+}
+
+.button.subscribe {
+	line-height: 1.8em;
+	margin: 0 auto;
+	padding: 5px 30px;
+	background: $buttonsubscribe;
+}
+
+nav .button.subscribe {
+	@include box-shadow(inset 0 15px 0 rgba(255,255,255,0.15));
+	behavior: url(../PIE.htc);
+}
+
+/* ======================================================
+	BENEFITS
+====================================================== */
+
+#benefits {
+
+}
+
+.benefits {
+	position: relative;
+	overflow: hidden;
+}
+
+.benefit {
+	text-align: center;
+	width: 30.6221868%;
+	float: left;
+	margin-right: -100%;
+
+	img {
+		max-width: 100%;
+		@include border-radius(50%);
+		behavior: url(../PIE.htc);
+	}
+
+	p {
+		width: 90%;
+		margin: 20px auto;
+	}
+
+	@media all and (max-width: 750px) {
+		width: 100%;
+		float: none;
+		margin-right: 0;
+	}
+}
+
+.benefit-one {
+	margin-left: 0;
+}
+
+.benefit-two {
+	margin-left: 34.66259084%;
+
+	@media all and (max-width: 750px) {
+		margin-left: 0
+	}
+}
+
+.benefit-three {
+	margin-left: 69.32624491%;
+
+	@media all and (max-width: 750px) {
+		margin-left: 0
+	}
+}
+
+#why, #whyalt {
+	ul li {
+		text-align: left;
+		padding: 5px 0;
+	}
+}
+
+
+/* ======================================================
+	TESTIMONIALS
+====================================================== */
+
+.testimonials-outer {
+	background: white;
+	background: rgba(221, 238, 245, 0.6);
+	border-top: 1px solid $bordercolor;
+	border-bottom: 1px solid $bordercolor;
+	min-height: 410px;
+}
+
+.slides_container {
+	width: 100%;
+	display: none;
+
+	div {
+		width: 100%;
+		display: block;
+		max-width: 1100px;
+	}
+}
+
+#testimonials {
+	position: relative;
+	overflow: hidden;
+	padding-top: 120px;
+	margin-bottom: 30px;
+
+	.section-title {
+		padding-top: 70px;
+		overflow: visible;
+	}
+
+	@media all and (max-width: 665px) {
+		padding-top: 50px;
+	}
+}
+
+.testimonial-content {
+	position: relative;
+	font-style: italic;
+	font-weight: 400;
+	@include font-size(20);
+	text-align: left;
+}
+
+.testimonial blockquote {
+	img {
+		margin-top: 7px;
+		width: 90px;
+		float: left;
+		@include border-radius(90px);
+		behavior: url(../PIE.htc);
+
+		@media all and (max-width: 650px) {
+			float: none;
+			display: block;
+			margin: 0 auto;
+		}
+	}
+
+	p {
+		margin: 0 0 90px 0;
+		padding-left: 120px;
+
+		@media all and (max-width: 650px) {
+			padding-left: 0;
+			padding-top: 20px;
+		}
+	}
+
+	cite {
+		margin-top: 20px;
+		display: block;
+		font-size: 13px;
+		text-transform: uppercase;
+		font-style: normal;
+		color: $darktext;
+
+		a {
+			text-transform: none;
+			color: $darktext;
+		}
+	}
+}
+
+
+/* ======================================================
+	FAQ'S
+====================================================== */
+
+#frequent {
+	position: relative;
+	margin-bottom: 10px;
+
+	.section-title {
+		margin-bottom: 40px;
+	}
+}
+
+.faq {
+	position: relative;
+	overflow: hidden;
+
+	p, ul {
+		margin: 0;
+	}
+
+	ul {
+		padding-left: 20px;
+	}
+}
+
+.faq-single {
+	margin-bottom: 30px;
+	width: 30.6221868%;
+	float: left;
+	margin-right: -100%;
+
+	@media all and (max-width: 750px) {
+		width: 100%;
+		float: none;
+		margin-right: 0;
+	}
+}
+
+.faq-one {
+	margin-left: 0;
+	clear: left;
+}
+
+.faq-two {
+	margin-left: 34.66259084%;
+
+	@media all and (max-width: 750px) {
+		margin-left: 0
+	}
+}
+
+.faq-three {
+	margin-left: 69.32624491%;
+
+	@media all and (max-width: 750px) {
+		margin-left: 0
+	}
+}
+
+/* ======================================================
+	SUBSCRIBE
+====================================================== */
+
+input {
+	height: 50px;
+	border: 0;
+	outline: 0;
+}
+
+#mce-EMAIL {
+	width: 100%;
+	position: relative;
+	float: left;
+	padding: 0 200px 0 20px;
+
+	@media all and (max-width: 500px) {
+		padding-right: 140px;
+	}
+}
+
+#mc-embedded-subscribe {
+	width: 180px;
+	position: absolute;
+	right: 0;
+	font-family: $fontstack;
+	background: $inactivebutton;
+	border-radius: 0;
+	padding: 0;
+	@include transition(background 0.3s ease);
+
+	&:hover {
+		background: #94c193;
+	}
+
+	@media all and (max-width: 500px) {
+		width: 130px;
+		padding: 0;
+	}
+}
+
+#mc_embed_signup {
+	border: 1px solid #9b9b9b;
+}
+
+#social .section-title {
+	padding-top: 20px;
+}
+
+#subscribe {
+	margin-bottom: 20px;
+}
+
+.button.subscribe {
+	background: #94c193;
+}
+
+/* ======================================================
+	SOCIAL
+====================================================== */
+
+#social {
+	position: relative;
+	overflow: hidden;
+}
+
+.social-buttons {
+	position: relative;
+	overflow: hidden;
+
+	a.button {
+		padding: 15px 0;
+	    text-align: center;
+	    text-transform: uppercase;
+	    letter-spacing: 1px;
+	}
+}
+
+.facebook, .twitter, .linkedin {
+	color: white;
+	@include transition(background 0.3s ease);
+	width: 30.6221868%;
+	float: left;
+	margin-right: -100%;
+
+	@media all and (max-width: 750px) {
+		width: 100%;
+		float: none;
+		margin-right: 0;
+	}
+}
+
+.facebook {
+	background: $inactivebutton;
+	margin-left: 0;
+
+	@media all and (max-width: 750px) {
+		margin-left: 0
+	}
+	
+	&:hover {
+		background: $facebook;
+	}
+}
+
+.twitter {
+	background: $inactivebutton;
+	margin-left: 34.66259084%;
+
+	@media all and (max-width: 750px) {
+		margin-left: 0;
+
+	}
+	
+	&:hover {
+		background: $twitter;
+	}
+}
+
+.linkedin {
+	background: $inactivebutton;
+	margin-left: 69.32624491%;
+
+	@media all and (max-width: 750px) {
+		margin-left: 0
+	}
+
+	&:hover {
+		background: $linkedin;
+	}
+}
+
+/* ======================================================
+	FOOTER
+====================================================== */
+
+.footer-wrap {
+	background: $darkbg;
+	position: relative;
+	overflow: hidden;
+	margin-top: 118px;
+
+	@media all and (max-width: 665px) {
+		margin-top: 50px;
+	}
+}
+
+#footer {
+	position: relative;
+	padding: 40px 0;
+
+	p {
+		@include font-size(12);
+		color: white;
+		text-align: center;
+
+		a {
+			color: white;
+		}
+	}
+}
+
+.disclaimer {
+	font-weight: 300;
+	@include font-size(11);
+}
+
+.footerlogo {
+	width: 300px;
+	margin: 0 auto;
+}

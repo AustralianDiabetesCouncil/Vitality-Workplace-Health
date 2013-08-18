@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'fontello';
+  src: url("../font/fontello.eot?48943419");
+  src: url("../font/fontello.eot?48943419#iefix") format('embedded-opentype'), url("../font/fontello.woff?48943419") format('woff'), url("../font/fontello.ttf?48943419") format('truetype'), url("../font/fontello.svg?48943419#fontello") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?48943419#fontello') format('svg');
+  }
+}
+*/
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: 'fontello';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.6em;
+  text-align: center;
+  color: white;
+/* opacity .8 */
+/* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+/* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+/* Animation center compensation - magrins should be symmetric */
+/* remove if not needed */
+  margin-left: 0.6em;
+/* you can be more comfortable with increased icons size */
+/* font-size: 120%; */
+/* Uncomment for 3D effect */
+/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-linkedin-1:before { content: '\21'; position: relative; top: -2px; } /* '!' */
+.icon-twitter-1:before { content: '\40'; margin-right: 0.7em; } /* '@' */
+.icon-facebook-1:before { content: '\23'; font-size: 1.1em; position: relative; top: -1px; } /* '#' */
+.icon-twitter:before { content: '\54'; } /* 'T' */
+.icon-facebook:before { content: '\46'; } /* 'F' */
+.icon-linkedin:before { content: '\4c'; } /* 'L' */
+.icon-twitter-alt:before { content: '\74'; } /* 't' */
+.icon-facebook-alt:before { content: '\66'; } /* 'f' */
+.icon-linkedin-alt:before { content: '\6c'; } /* 'l' */
